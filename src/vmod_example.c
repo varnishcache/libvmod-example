@@ -28,6 +28,7 @@ event_function(VRT_CTX, struct vmod_priv *priv, enum vcl_event_e e)
 	char	   ts[VTIM_FORMAT_SIZE];
 	const char *event = NULL;
 
+	(void) ctx;
 	(void) priv;
 
 	switch (e) {
@@ -60,6 +61,8 @@ event_function(VRT_CTX, struct vmod_priv *priv, enum vcl_event_e e)
 VCL_STRING
 vmod_info(VRT_CTX)
 {
+	(void) ctx;
+
 	return (info);
 }
 
