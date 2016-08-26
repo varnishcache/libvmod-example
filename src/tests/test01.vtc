@@ -6,17 +6,31 @@ server s1 {
 } -start
 
 varnish v1 -vcl+backend {
+	import std;
 	import example from "${vmod_topbuild}/src/.libs/libvmod_example.so";
+
+	sub vcl_init {
+		std.log(example.info());
+	}
 
 	sub vcl_deliver {
 		set resp.http.hello = example.hello("World");
+		set resp.http.info = example.info();
 	}
+} -start
+
+logexpect l1 -v v1 -g raw -d 1 {
+	expect 0 0    CLI     {^Rd vcl.load}
+	expect 0 =    VCL_Log {^vmod_example loaded at }
 } -start
 
 client c1 {
 	txreq -url "/"
 	rxresp
 	expect resp.http.hello == "Hello, World"
+	expect resp.http.info  ~  "^vmod_example warmed at "
 }
 
 client c1 -run
+
+logexpect l1 -wait

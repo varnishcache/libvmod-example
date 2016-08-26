@@ -20,7 +20,12 @@ You can even have links and lists in here:
 
 The init-function declared next does not have documentation.
 
-$Init init_function
+$Event event_function
+$Function STRING info()
+
+Returns a string set by the last VCL event, demonstrating the use of
+event functions.
+
 $Function STRING hello(STRING)
 
 The different functions provided by the VMOD should also have their own

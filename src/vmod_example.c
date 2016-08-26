@@ -3,15 +3,64 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* need vcl.h before vrt.h for vmod_evet_f typedef */
+#include "vcl.h"
 #include "vrt.h"
 #include "cache/cache.h"
 
+#include "vtim.h"
 #include "vcc_if.h"
 
-int
-init_function(struct vmod_priv *priv, const struct VCL_conf *conf)
+const size_t infosz = 64;
+char	     *info;
+
+/*
+ * handle vmod internal state, vmod init/fini and/or varnish callback
+ * (un)registration here.
+ *
+ * malloc'ing the info buffer is only indended as a demonstration, for any
+ * real-world vmod, a fixed-sized buffer should be a global variable
+ */
+
+int __match_proto__(vmod_event_f)
+event_function(VRT_CTX, struct vmod_priv *priv, enum vcl_event_e e)
 {
+	char	   ts[VTIM_FORMAT_SIZE];
+	const char *event = NULL;
+
+	(void) priv;
+
+	switch (e) {
+	case VCL_EVENT_LOAD:
+		info = malloc(infosz);
+		if (! info)
+			return (-1);
+		event = "loaded";
+		break;
+	case VCL_EVENT_WARM:
+		event = "warmed";
+		break;
+	case VCL_EVENT_COLD:
+		event = "cooled";
+		break;
+	case VCL_EVENT_DISCARD:
+		free(info);
+		return (0);
+		break;
+	default:
+		return (0);
+	}
+	AN(event);
+	VTIM_format(VTIM_real(), ts);
+	snprintf(info, infosz, "vmod_example %s at %s", event, ts);
+
 	return (0);
+}
+
+VCL_STRING
+vmod_info(VRT_CTX)
+{
+	return (info);
 }
 
 VCL_STRING
