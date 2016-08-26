@@ -64,7 +64,7 @@ vmod_info(VRT_CTX)
 }
 
 VCL_STRING
-vmod_hello(const struct vrt_ctx *ctx, VCL_STRING name)
+vmod_hello(VRT_CTX, VCL_STRING name)
 {
 	char *p;
 	unsigned u, v;
