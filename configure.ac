@@ -27,9 +27,6 @@ if test "x$RST2MAN" = "xno"; then
 	AC_MSG_ERROR([rst2man not found - cannot build man pages])
 fi
 
-# Checks for header files.
-AC_CHECK_HEADERS([sys/stdlib.h])
-
 VMOD_TESTS="$(cd $srcdir/src && echo tests/*.vtc)"
 AC_SUBST(VMOD_TESTS)
 
