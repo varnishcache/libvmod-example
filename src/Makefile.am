@@ -26,6 +26,7 @@ vmod_example.man.rst vcc_if.c: vcc_if.h
 vcc_if.h: @VMODTOOL@ $(top_srcdir)/src/vmod_example.vcc
 	@PYTHON@ @VMODTOOL@ $(top_srcdir)/src/vmod_example.vcc
 
+AM_TESTS_ENVIRONMENT = LD_LIBRARY_PATH="$(VARNISH_LIBRARY_PATH)"
 VTC_LOG_COMPILER = $(VARNISHTEST) -v \
 	-Dvmod_topbuild=$(abs_top_builddir)
 TEST_EXTENSIONS = .vtc
