@@ -7,19 +7,12 @@ AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_SRCDIR(src/vmod_example.vcc)
 AC_CONFIG_HEADER([config.h])
 
-AC_LANG(C)
-
 AM_INIT_AUTOMAKE([1.12 -Wall -Werror foreign parallel-tests])
 AM_SILENT_RULES([yes])
 AM_PROG_AR
 
-AC_GNU_SOURCE
-AC_PROG_CC
-AC_PROG_CC_STDC
-if test "x$ac_cv_prog_cc_c99" = xno; then
-	AC_MSG_ERROR([Could not find a C99 compatible compiler])
-fi
-AC_PROG_CPP
+LT_PREREQ([2.2.6])
+LT_INIT([dlopen disable-static])
 
 AX_PTHREAD(,[AC_MSG_ERROR([Could not configure pthreads support])])
 
@@ -27,10 +20,6 @@ LIBS="$PTHREAD_LIBS $LIBS"
 CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
 CC="$PTHREAD_CC"
 
-LT_INIT([disable-static])
-AC_PROG_INSTALL
-AC_PROG_LIBTOOL
-AC_PROG_MAKE_SET
 
 # Check for rst utilities
 AC_CHECK_PROGS(RST2MAN, [rst2man rst2man.py], "no")
@@ -39,7 +28,6 @@ if test "x$RST2MAN" = "xno"; then
 fi
 
 # Checks for header files.
-AC_HEADER_STDC
 AC_CHECK_HEADERS([sys/stdlib.h])
 
 VMOD_TESTS="$(cd $srcdir/src && echo tests/*.vtc)"
