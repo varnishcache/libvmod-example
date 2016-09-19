@@ -7,7 +7,6 @@ AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_SRCDIR(src/vmod_example.vcc)
 AC_CONFIG_HEADER([config.h])
 
-AC_CANONICAL_SYSTEM
 AC_LANG(C)
 
 AM_INIT_AUTOMAKE([foreign])
