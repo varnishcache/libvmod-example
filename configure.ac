@@ -19,12 +19,12 @@ LIBS="$PTHREAD_LIBS $LIBS"
 CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
 CC="$PTHREAD_CC"
 
-
-# Check for rst utilities
-AC_CHECK_PROGS(RST2MAN, [rst2man rst2man.py], "no")
-if test "x$RST2MAN" = "xno"; then
-	AC_MSG_ERROR([rst2man not found - cannot build man pages])
-fi
+AC_ARG_WITH([rst2man],
+	AS_HELP_STRING(
+		[--with-rst2man=PATH],
+		[Location of rst2man (auto)]),
+	[RST2MAN="$withval"],
+	AC_CHECK_PROGS(RST2MAN, [rst2man rst2man.py], []))
 
 m4_ifndef([VARNISH_PREREQ], AC_MSG_ERROR([Need varnish.m4 -- see README.rst]))
 
