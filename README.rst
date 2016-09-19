@@ -1,14 +1,6 @@
 ============
-vmod_example
+vmod-example
 ============
-
-----------------------
-Varnish Example Module
-----------------------
-
-:Date: 2015-03-03
-:Version: 1.0
-:Manual section: 3
 
 SYNOPSIS
 ========
