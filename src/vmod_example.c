@@ -9,7 +9,7 @@
 #include "cache/cache.h"
 
 #include "vtim.h"
-#include "vcc_if.h"
+#include "vcc_example_if.h"
 
 const size_t infosz = 64;
 char	     *info;
