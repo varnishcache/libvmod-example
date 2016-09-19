@@ -9,7 +9,9 @@ AC_CONFIG_HEADER([config.h])
 
 AC_LANG(C)
 
-AM_INIT_AUTOMAKE([foreign])
+AM_INIT_AUTOMAKE([1.12 -Wall -Werror foreign parallel-tests])
+AM_SILENT_RULES([yes])
+AM_PROG_AR
 
 AC_GNU_SOURCE
 AC_PROG_CC
