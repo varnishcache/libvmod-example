@@ -61,27 +61,34 @@ If you have installed Varnish to a non-standard directory, call
 the appropriate path. For instance, when varnishd configure was called
 with ``--prefix=$PREFIX``, use
 
- PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
- export PKG_CONFIG_PATH
+::
+
+ export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
+ export ACLOCAL_PATH=${PREFIX}/share/aclocal
+
+The module will inherit its prefix from Varnish, unless you specify a
+different ``--prefix`` when running the ``configure`` script for this
+module.
 
 Make targets:
 
 * make - builds the vmod.
 * make install - installs your vmod.
-* make check - runs the unit tests in ``src/tests/*.vtc``
+* make check - runs the unit tests in ``src/tests/*.vtc``.
 * make distcheck - run check and prepare a tarball of the vmod.
+
+If you build a dist tarball, you don't need any of the autotools or
+pkg-config. You can build the module simply by running::
+
+ ./configure
+ make
 
 Installation directories
 ------------------------
 
-By default, the vmod ``configure`` script installs the built vmod in
-the same directory as Varnish, determined via ``pkg-config(1)``. The
-vmod installation directory can be overridden by passing the
-``VMOD_DIR`` variable to ``configure``.
-
-Other files like man-pages and documentation are installed in the
-locations determined by ``configure``, which inherits its default
-``--prefix`` setting from Varnish.
+By default, the vmod ``configure`` script installs the built vmod in the
+directory relevant to the prefix. The vmod installation directory can be
+overridden by passing the ``vmoddir`` variable to ``make install``.
 
 USAGE EXAMPLE
 =============
@@ -106,5 +113,5 @@ COMMON PROBLEMS
 * Incompatibilities with different Varnish Cache versions
 
   Make sure you build this vmod against its correspondent Varnish Cache version.
-  For instance, to build against Varnish Cache 4.0, this vmod must be built from
-  branch 4.0.
+  For instance, to build against Varnish Cache 4.1, this vmod must be built from
+  branch 4.1.
