@@ -99,8 +99,8 @@ COMMON PROBLEMS
 
 * configure: error: Need varnish.m4 -- see README.rst
 
-  Check if ``PKG_CONFIG_PATH`` has been set correctly before calling
-  ``autogen.sh`` and ``configure``
+  Check whether ``PKG_CONFIG_PATH`` and ``ACLOCAL_PATH`` were set correctly
+  before calling ``autogen.sh`` and ``configure``
 
 * Incompatibilities with different Varnish Cache versions
 
