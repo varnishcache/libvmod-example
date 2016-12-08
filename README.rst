@@ -82,8 +82,8 @@ By default, the vmod ``configure`` script installs the built vmod in the
 directory relevant to the prefix. The vmod installation directory can be
 overridden by passing the ``vmoddir`` variable to ``make install``.
 
-USAGE EXAMPLE
-=============
+USAGE
+=====
 
 In your VCL you could then use this vmod along the following lines::
 

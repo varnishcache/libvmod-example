@@ -21,6 +21,7 @@ fi
 
 SYM_NAME=${NAME,,*}
 CAP_NAME=${NAME^?}
+UPP_NAME=${NAME^^?}
 
 if ! git diff-index --quiet HEAD --; then
 	echo "ERROR: Need a clean working tree. Run \"git stash\" first."
@@ -32,8 +33,12 @@ git mv src/vmod_example.vcc src/vmod_${SYM_NAME}.vcc
 
 git grep -z -l example | xargs -0 sed -i -s -e "s/example/${SYM_NAME}/g"
 git grep -z -l Example | xargs -0 sed -i -s -e "s/Example/${CAP_NAME}/g"
+git grep -z -l EXAMPLE | xargs -0 sed -i -s -e "s/EXAMPLE/${UPP_NAME}/g"
 
 git rm -f rename-vmod-script
+
+# restore foreign files
+git checkout m4/*
 
 cat <<EOF
 All done.
