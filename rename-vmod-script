@@ -38,7 +38,7 @@ git grep -z -l EXAMPLE | xargs -0 sed -i -s -e "s/EXAMPLE/${UPP_NAME}/g"
 git rm -f rename-vmod-script
 
 # restore foreign files
-git checkout m4/*
+git checkout -- m4/
 
 cat <<EOF
 All done.
