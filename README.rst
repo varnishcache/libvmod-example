@@ -107,3 +107,15 @@ COMMON PROBLEMS
   Make sure you build this vmod against its correspondent Varnish Cache version.
   For instance, to build against Varnish Cache 4.1, this vmod must be built from
   branch 4.1.
+
+START YOUR OWN VMOD
+===================
+
+The basic steps to start a new vmod from this example are::
+
+  name=myvmod
+  git clone libvmod-example libvmod-$name
+  cd libvmod-$name
+  ./rename-vmod-script $name
+
+and follow the instructions output by rename-vmod-script
