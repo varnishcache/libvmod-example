@@ -18,8 +18,6 @@ You can even have links and lists in here:
 * https://github.com/varnish/libvmod-example/
 * https://www.varnish-cache.org/
 
-The init-function declared next does not have documentation.
-
 $Event event_function
 $Function STRING info()
 
