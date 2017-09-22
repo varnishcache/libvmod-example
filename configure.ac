@@ -1,6 +1,6 @@
 AC_PREREQ([2.68])
 AC_INIT([libvmod-example], [0.1], [], [vmod-example])
-AC_COPYRIGHT([Copyright (c) 2011-2016 Varnish Software AS])
+AC_COPYRIGHT([Public Domain])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_SRCDIR(src/vmod_example.vcc)
