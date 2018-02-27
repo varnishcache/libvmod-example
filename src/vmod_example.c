@@ -4,8 +4,6 @@
 #include <stdlib.h>
 
 #include "cache/cache.h"
-#include "vrt.h"
-#include "vcl.h"
 
 #include "vtim.h"
 #include "vcc_example_if.h"
@@ -21,7 +19,7 @@ char	     *info;
  * real-world vmod, a fixed-sized buffer should be a global variable
  */
 
-int __match_proto__(vmod_event_f)
+int v_matchproto_(vmod_event_f)
 event_function(VRT_CTX, struct vmod_priv *priv, enum vcl_event_e e)
 {
 	char	   ts[VTIM_FORMAT_SIZE];
