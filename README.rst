@@ -2,6 +2,12 @@
 vmod-example
 ============
 
+notice
+------
+
+For new developments, we recommend to consider using
+https://github.com/Dridi/vcdk
+
 SYNOPSIS
 ========
 
