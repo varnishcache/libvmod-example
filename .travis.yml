@@ -1,6 +1,6 @@
 ---
 sudo: required
-dist: trusty
+dist: xenial
 
 language: c
 
@@ -8,6 +8,7 @@ addons:
   apt:
     packages:
     - python-docutils
+    - python-sphinx
 
 before_install:
   - set -e
