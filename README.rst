@@ -126,4 +126,5 @@ The basic steps to start a new vmod from this example are::
 
 and follow the instructions output by rename-vmod-script
 
-[![CircleCI](https://circleci.com/gh/varnishcache/libvmod-example/tree/master.svg?style=svg)](https://app.circleci.com/pipelines/github/varnishcache/libvmod-example?branch=master)
+.. image:: https://circleci.com/gh/varnishcache/libvmod-example/tree/master.svg?style=svg
+    :target: https://app.circleci.com/pipelines/github/varnishcache/libvmod-example?branch=master
