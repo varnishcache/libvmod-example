@@ -34,6 +34,7 @@ git mv src/vmod_example.vcc src/vmod_${SYM_NAME}.vcc
 git grep -z -l example | xargs -0 sed -i -s -e "s/example/${SYM_NAME}/g"
 git grep -z -l Example | xargs -0 sed -i -s -e "s/Example/${CAP_NAME}/g"
 git grep -z -l EXAMPLE | xargs -0 sed -i -s -e "s/EXAMPLE/${UPP_NAME}/g"
+sed -i '/\[\!\[CircleCI\]/d' README.rst
 
 git rm -f rename-vmod-script
 
