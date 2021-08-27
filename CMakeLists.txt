@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 set(VMOD_NAME example)
-project(vmod_${VMOD_NAME} VERSION 1.0)
+set(VC_VERSION 6.6.1)
+project(vmod_${VMOD_NAME} VERSION 0.0.1)
 enable_testing()
 
 find_package(PkgConfig REQUIRED)
