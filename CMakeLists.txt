@@ -33,7 +33,7 @@ add_custom_command(
 add_custom_target(manpage ALL DEPENDS ${CMAKE_BINARY_DIR}/vmod_${VMOD_NAME}.3)
 install(FILES ${CMAKE_BINARY_DIR}/vmod_${VMOD_NAME}.3 TYPE MAN)
 
-file(GLOB vtcs ${CMAKE_CURRENT_SOURCE_DIR}/src/tests/*.vtc)
+file(GLOB vtcs ${CMAKE_CURRENT_SOURCE_DIR}/tests/*.vtc)
 foreach(vtc ${vtcs})
 	add_test(NAME ${vtc} COMMAND varnishtest -v "-Dvmod_${VMOD_NAME}=${VMOD_NAME} from \"${CMAKE_BINARY_DIR}/libvmod_${VMOD_NAME}.so\"" ${vtc})
 endforeach()
