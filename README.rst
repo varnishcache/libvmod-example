@@ -42,7 +42,13 @@ Example
 INSTALLATION
 ============
 
-The source tree is based on autotools to configure the building, and
+Installation will require:
+
+- `cmake`
+- `make`, `ninja` or another build system
+- `clang`, `gcc` or another C compiler
+
+The source tree is based on `cmake` to configure the building, and
 does also have the necessary bits in place to do functional unit tests
 using the ``varnishtest`` tool.
 
@@ -51,42 +57,25 @@ the necessary paths.
 
 Usage::
 
- ./autogen.sh
- ./configure
+ mkdir build
+ cmake -S . -B build 
 
-If you have installed Varnish to a non-standard directory, call
-``autogen.sh`` and ``configure`` with ``PKG_CONFIG_PATH`` pointing to
-the appropriate path. For instance, when varnishd configure was called
-with ``--prefix=$PREFIX``, use
+If you have installed Varnish to a non-standard directory, export
+``PKG_CONFIG_PATH`` pointing to the appropriate path before calling `cmake`.
+For instance, when varnishd configure was called with ``--prefix=$PREFIX``, use
 
 ::
 
  export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
- export ACLOCAL_PATH=${PREFIX}/share/aclocal
-
-The module will inherit its prefix from Varnish, unless you specify a
-different ``--prefix`` when running the ``configure`` script for this
-module.
 
 Make targets:
 
-* make - builds the vmod.
-* make install - installs your vmod.
-* make check - runs the unit tests in ``src/tests/*.vtc``.
-* make distcheck - run check and prepare a tarball of the vmod.
+* `make -C build` - builds the vmod.
+* `make -C build install` - installs your vmod.
+* `make -C build test` - runs the unit tests in ``tests/*.vtc``.
 
-If you build a dist tarball, you don't need any of the autotools or
-pkg-config. You can build the module simply by running::
-
- ./configure
- make
-
-Installation directories
-------------------------
-
-By default, the vmod ``configure`` script installs the built vmod in the
-directory relevant to the prefix. The vmod installation directory can be
-overridden by passing the ``vmoddir`` variable to ``make install``.
+You can install your vmod under a specific prefix by adding `DESTDIR` to
+the `make` command line.
 
 USAGE
 =====

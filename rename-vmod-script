@@ -38,9 +38,6 @@ sed -i '/circleci.com\/gh\/varnishcache\/libvmod-example/d' README.rst
 
 git rm -f rename-vmod-script
 
-# restore foreign files
-git checkout -- m4/
-
 cat <<EOF
 All done.
 
