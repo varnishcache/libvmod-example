@@ -5,8 +5,7 @@ vmod-example
 notice
 ------
 
-For new developments, we recommend to consider using
-https://github.com/Dridi/vcdk
+For new developments, we recommend to consider using https://git.sr.ht/~dridi/vcdk
 
 SYNOPSIS
 ========
