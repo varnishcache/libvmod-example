@@ -6,6 +6,15 @@ AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_SRCDIR(src/vmod_example.vcc)
 AC_CONFIG_HEADER([config.h])
 
+AC_MSG_ERROR([
+
+
+             THIS REPOSITORY HAS MOVED. See README.rst
+
+
+             ])
+
+
 AM_INIT_AUTOMAKE([1.12 -Wall -Werror foreign parallel-tests])
 AM_SILENT_RULES([yes])
 AM_PROG_AR
